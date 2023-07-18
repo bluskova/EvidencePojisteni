@@ -1,7 +1,5 @@
-"""Konzolová aplikace (C#, Java, Python)
-Naprogramuj konzolovou aplikaci pro evidenci pojistných událostí.
+"""Konzolová aplikace pro evidenci pojistných událostí.
 
-Minimální požadavky ke splnění
 Aplikace obsahuje správu pojištěných (to jsou pojištěné osoby, např. "Jan Novák"):
 Vytvoření pojištěného
 Evidujte jméno, příjmení, věk a telefonní číslo
@@ -18,15 +16,16 @@ Editaci a odstranění pojištěných ani ukládání dat po skončení aplikace
 from pojisteny import Pojisteny
 from funkce import *
 
+
 evidence = []
 
-# pridani pojistenych - testovaci data
-pojisteny = Pojisteny('Jan', 'Novak', 35, 775141988)
-evidence.append(pojisteny)
-pojisteny = Pojisteny('Ales', 'Luska', 4, 728582450)
-evidence.append(pojisteny)
-pojisteny = Pojisteny('Ales', 'Luska', 88, 728582450)
-evidence.append(pojisteny)
+# # pridani pojistenych - testovaci data
+# pojisteny = Pojisteny('Jan', 'Novak', 35, 775141988)
+# evidence.append(pojisteny)
+# pojisteny = Pojisteny('Ales', 'Luska', 4, 728582450)
+# evidence.append(pojisteny)
+# pojisteny = Pojisteny('Ales', 'Luska', 88, 728582450)
+# evidence.append(pojisteny)
 
 print('--------------------------------------')
 print('Evidence pojištěných')
@@ -54,7 +53,10 @@ while not konec:
                 print(f'\nData byla uložena. ', end='')
                 input(pokracujte)
         elif prikaz == 2:
-            vypis_evidenci(evidence)
+            if len(evidence) > 0:
+                vypis_evidenci(evidence)
+            else:
+                print('Evidence neobsahuje žádného pojištěného. ',)
             input(pokracujte)
         elif prikaz == 3:
             jmeno, prijmeni = nacti_udaje()

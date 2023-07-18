@@ -1,5 +1,6 @@
 from funkce import max_delka_jmena
 
+
 class Pojisteny:
 
     def __init__(self, jmeno, prijmeni, vek, telefon):

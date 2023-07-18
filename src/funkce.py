@@ -7,6 +7,7 @@ max_delka_jmena = 15
 pokracujte = 'Pokračujte stisknutím klávesy Enter...'
 hlavicka_evidence = "".join(slovo.ljust(max_delka_jmena) for slovo in ['Jméno', 'Příjmení', 'Věk', 'Telefonní číslo'])
 
+
 def nacti_jmeno(prijmeni = False):
     jmeno_ok = False
     while not jmeno_ok:
@@ -18,19 +19,21 @@ def nacti_jmeno(prijmeni = False):
             print(f'Nesprávný formát. Použijte minimálně 2, maximálně {max_delka_jmena} znaků [a - ž].')
     return jmeno
 
+
 def nacti_vek():
     vek_ok = False
     while not vek_ok:
         vek = input('Zadejte věk: ')
         try:
             vek = int(vek)
-            if vek >= 0 and vek <= 130:
+            if 0 <= vek <= 130:
                 vek_ok = True
             else:
                 print(f'Zadal(a) jste {vek}. Prosím zadejte věk v rozmezí 0 - 130.')
         except ValueError:
             print(f'Zadal(a) jste "{vek}". Prosím zadejte číslo [0 - 130].')
     return vek
+
 
 def nacti_telefon():
     telefon_ok = False
