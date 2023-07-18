@@ -1,73 +1,67 @@
-"""Konzolová aplikace pro evidenci pojistných událostí.
+"""
+Konzolová aplikace pro evidenci pojistných událostí (pojištěných osob).
 
-Aplikace obsahuje správu pojištěných (to jsou pojištěné osoby, např. "Jan Novák"):
-Vytvoření pojištěného
-Evidujte jméno, příjmení, věk a telefonní číslo
+Aplikace obsahuje správu pojištěných (pojištěné osoby, např. "Jan Novák"):
+Vytvoření pojištěného - eviduje se jméno, příjmení, věk a telefonní číslo
 Zobrazení seznamu všech pojištěných
-Vyhledání pojištěného podle jména a příjmení
-Dané entity jsou uloženy v kolekci v paměti
-Aplikace je naprogramována podle dobrých praktik
-Využívejte konstruktory pro inicializaci objektů
-toString() pro jejich výpis
-Oddělujte kód do samostatných tříd a souborů
-Editaci a odstranění pojištěných ani ukládání dat po skončení aplikace není třeba řešit."""
+Vyhledání pojištěného - podle jména a příjmení
 
+Dané entity jsou uloženy v paměti v kolekci "registry".
+Ukládání dat po skončení aplikace se neřeší.
+"""
 
-from pojisteny import Pojisteny
-from funkce import *
+from person import Person
+from memory_storage import MemoryStorage
+from db_storage import DbStorage
+from function import *
+from src.test_data import test_data
 
+registry = DbStorage()
+# pridani pojistenych - testovaci data
+for i in test_data:
+    registry.add_person(i)
 
-evidence = []
-
-# # pridani pojistenych - testovaci data
-# pojisteny = Pojisteny('Jan', 'Novak', 35, 775141988)
-# evidence.append(pojisteny)
-# pojisteny = Pojisteny('Ales', 'Luska', 4, 728582450)
-# evidence.append(pojisteny)
-# pojisteny = Pojisteny('Ales', 'Luska', 88, 728582450)
-# evidence.append(pojisteny)
 
 print('--------------------------------------')
 print('Evidence pojištěných')
 print('--------------------------------------')
 
-konec = False
-while not konec:
+end = False
+while not end:
     print('\nVyberte akci:')
     print('1 - Přidat nového pojištěného')
     print('2 - Vypsat všechny pojištěné')
     print('3 - Vyhledat pojištěného')
     print('4 - Konec')
-    prikaz = input().strip()
-    print()
+    instruction = input().strip()
     try:
-        prikaz = int(prikaz)
-        if prikaz == 1:
-            jmeno, prijmeni, vek, telefon = nacti_udaje(vek_nacist=True, telefon_nacist=True)
-            if je_v_evidenci(evidence, jmeno, prijmeni, vek):
-                print(f'\n{jmeno} {prijmeni}, věk {vek} je již uložen v evidenci. ', end='')
-                input(pokracujte)
+        instruction = int(instruction)
+        if instruction == 1:
+            name, surname, age, phone = load_data(age=True, phone=True)
+            person = Person(name, surname, age, phone)
+            if registry.is_person_registered(person):
+                print(f'\n{person} je již uložen v evidenci. ', end='')
             else:
-                pojisteny = Pojisteny(jmeno, prijmeni, vek, telefon)
-                evidence.append(pojisteny)
+                registry.add_person(person)
                 print(f'\nData byla uložena. ', end='')
-                input(pokracujte)
-        elif prikaz == 2:
-            if len(evidence) > 0:
-                vypis_evidenci(evidence)
+            input(go_on)
+        elif instruction == 2:
+            if registry.number_of_records() > 0:
+                print(registry.get_person_data())
             else:
-                print('Evidence neobsahuje žádného pojištěného. ',)
-            input(pokracujte)
-        elif prikaz == 3:
-            jmeno, prijmeni = nacti_udaje()
-            if not je_v_evidenci(evidence, jmeno, prijmeni):
-                print(f'\n{jmeno} {prijmeni} není v evidenci.')
+                print('Evidence neobsahuje žádného pojištěného. ', end='')
+            input(go_on)
+        elif instruction == 3:
+            name, surname = load_data()
+            person = Person(name, surname)
+            if not registry.is_person_registered(person):
+                print(f'\n{person} není v evidenci. ', end='')
             else:
-                vypis_evidenci(evidence, jmeno, prijmeni)
-            input(pokracujte)
-        elif prikaz == 4:
-            konec = True
+                print(registry.get_person_data(person))
+            input(go_on)
+        elif instruction == 4:
+            end = True
         else:
-            print(f'Zadal(a) jste {prikaz}, prosím zadete číslo 1 - 4!')
+            print(f'Zadal(a) jste {instruction}, prosím zadejte číslo 1 - 4!')
     except ValueError:
-        print(f'Zadal(a) jste "{prikaz}", prosím zadete číslo!')
+        print(f'Zadal(a) jste "{instruction}", prosím zadejte číslo!')
