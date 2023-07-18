@@ -21,27 +21,19 @@ class MemoryStorage(StorageInterface):
     def remove_person(self, person: Person):
         self.__records.remove(person)
 
-    def is_person_registered(self, wanted_person: Person):
+    def is_person_registered(self, name: str, surname: str, age: Optional[int] = None):
         is_registered = False
         for person in self.__records:
-            if person.get_name() == wanted_person.get_name() and person.get_surname() == wanted_person.get_surname():
-                if wanted_person.get_age():
-                    if person.get_age() == wanted_person.get_age():
+            if person.get_name() == name and person.get_surname() == surname:
+                if age:
+                    if person.get_age() == age:
                         is_registered = True
                 else:
                     is_registered = True
         return is_registered
 
-    def get_person_data(self, selected_person: Optional[Person] = None):
-        ret = []
-        for person in self.__records:
-            if not selected_person:
-                ret.append(person.get_as_tuple())
-            else:
-                if person.get_name() == selected_person.get_name() and person.get_surname() == selected_person.get_surname():
-                    if selected_person.get_age():
-                        if person.get_age() == selected_person.get_age():
-                            ret.append(person.get_as_tuple())
-                    else:
-                        ret.append(person.get_as_tuple())
-        return ret
+    def get_all_persons(self):
+        return self.__records
+
+    def get_persons(self, name, surname):
+        return [p for p in self.__records if p.get_name() == name and p.get_surname() == surname]

@@ -1,8 +1,12 @@
+from typing import List
+
+from src.person import Person
+
 name_max_len = 15
 go_on = 'Pokračujte stisknutím klávesy Enter...'
 
 
-def load_name(surname=False):
+def load_name(surname=None):
     name_ok = False
     while not name_ok:
         name = input(f'Zadejte {"příjmení" if surname else "jméno pojištěného"}: ').strip()
@@ -52,3 +56,15 @@ def load_data(age=False, phone=False):
     if phone:
         data.append(load_phone())
     return data
+
+
+def get_person_text_row(person: Person):
+    return f'{person.get_name(): <{name_max_len}}{person.get_surname(): <{name_max_len}}' \
+           f'{person.get_age(): <{name_max_len}}{person.get_phone(): <{name_max_len}}'
+
+
+def print_persons_table(persons_list: List[Person]):
+    head = "".join(column.ljust(name_max_len) for column in ['Jméno', 'Příjmení', 'Věk', 'Telefonní číslo'])
+    print(head)
+    for person in persons_list:
+        print(get_person_text_row(person))

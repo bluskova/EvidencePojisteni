@@ -38,7 +38,6 @@ create_tables_sql = (
 
 insert_person_sql = "INSERT INTO registry_insured (name, surname, age, phone) VALUES (?, ?, ?, ?)"
 select_sql = "SELECT name, surname, age, phone FROM registry_insured WHERE name = ? AND surname = ?"
-select2_sql = "SELECT name, surname, age, phone FROM registry_insured WHERE name = ? AND surname = ? AND age = ?"
 select_all_sql = "SELECT name, surname, age, phone FROM registry_insured"
 select_count_sql = "SELECT COUNT(*) FROM registry_insured WHERE name = ? AND surname = ?"
 select_count2_sql = "SELECT COUNT(*) FROM registry_insured WHERE name = ? AND surname = ? AND age = ?"
@@ -47,3 +46,10 @@ remove_person_sql = "DELETE FROM registry_insured WHERE name = ? AND surname = ?
 remove_person2_sql = "DELETE FROM registry_insured WHERE name = ? AND surname = ? AND age = ?"
 update_sql = "UPDATE registry_insured SET age = ? WHERE name = ? AND surname = ?"
 update2_sql = "UPDATE registry_insured SET age = ? WHERE name = ? AND surname = ? AND age = ?"
+
+
+def get_select_count_sql(use_age):
+    base_sql =  "SELECT COUNT(*) FROM registry_insured WHERE name = ? AND surname = ?"
+    if use_age:
+        base_sql += " AND age ?"
+    return base_sql

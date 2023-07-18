@@ -1,6 +1,3 @@
-from function import name_max_len
-
-
 class Person:
 
     def __init__(self, name, surname, age=None, phone=None):
@@ -12,10 +9,6 @@ class Person:
     def __str__(self):
         return f'{self.__name} {self.__surname}{", věk " if self.__age else ""}{self.__age if self.__age else ""}'
 
-    # def print_in_table(self):
-    #     print(f'{self.__name: <{name_max_len}}{self.__surname: <{name_max_len}}{self.__age: <{name_max_len}}'
-    #           f'{self.__phone: <{name_max_len}}')
-
     def get_name(self):
         return self.__name
 
@@ -24,6 +17,9 @@ class Person:
 
     def get_age(self):
         return self.__age
+
+    def get_phone(self):
+        return self.__phone
 
     def get_as_tuple(self):
         ret = (self.__name, self.__surname)
