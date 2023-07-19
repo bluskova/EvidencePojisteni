@@ -2,11 +2,11 @@ import sqlite3
 from sqlite3 import Error as SQLError
 from typing import Optional
 
+from src.data_storage.storage_interface import StorageInterface
 from src.person import Person
 
 from src.sql_code import create_tables_sql, insert_person_sql, select_persons_sql, select_all_persons_sql, \
     select_count_of_all_persons_sql, get_count_of_persons_sql, get_remove_person_sql
-from tests import StorageInterface
 
 
 class DbStorage(StorageInterface):

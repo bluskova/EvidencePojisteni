@@ -15,7 +15,7 @@ class StorageInterface:
         pass
 
     @abstractmethod
-    def remove_person(self, person: Person) -> None:
+    def remove_person(self, name: str, surname: str, age: Optional[int]) -> None:
         pass
 
     @abstractmethod
