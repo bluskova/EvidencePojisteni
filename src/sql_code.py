@@ -37,19 +37,31 @@ create_tables_sql = (
     "COMMIT")
 
 insert_person_sql = "INSERT INTO registry_insured (name, surname, age, phone) VALUES (?, ?, ?, ?)"
-select_sql = "SELECT name, surname, age, phone FROM registry_insured WHERE name = ? AND surname = ?"
-select_all_sql = "SELECT name, surname, age, phone FROM registry_insured"
-select_count_sql = "SELECT COUNT(*) FROM registry_insured WHERE name = ? AND surname = ?"
-select_count2_sql = "SELECT COUNT(*) FROM registry_insured WHERE name = ? AND surname = ? AND age = ?"
-select_count_all_sql = "SELECT COUNT(*) FROM registry_insured"
-remove_person_sql = "DELETE FROM registry_insured WHERE name = ? AND surname = ?"
-remove_person2_sql = "DELETE FROM registry_insured WHERE name = ? AND surname = ? AND age = ?"
-update_sql = "UPDATE registry_insured SET age = ? WHERE name = ? AND surname = ?"
-update2_sql = "UPDATE registry_insured SET age = ? WHERE name = ? AND surname = ? AND age = ?"
+select_persons_sql = "SELECT name, surname, age, phone FROM registry_insured WHERE name = ? AND surname = ?"
+select_all_persons_sql = "SELECT name, surname, age, phone FROM registry_insured"
+# select_count_sql = "SELECT COUNT(*) FROM registry_insured WHERE name = ? AND surname = ?"
+# select_count2_sql = "SELECT COUNT(*) FROM registry_insured WHERE name = ? AND surname = ? AND age = ?"
+select_count_of_all_persons_sql = "SELECT COUNT(*) FROM registry_insured"
+# update_sql = "UPDATE registry_insured SET age = ? WHERE name = ? AND surname = ?"
+# update2_sql = "UPDATE registry_insured SET age = ? WHERE name = ? AND surname = ? AND age = ?"
 
 
-def get_select_count_sql(use_age):
-    base_sql =  "SELECT COUNT(*) FROM registry_insured WHERE name = ? AND surname = ?"
+def get_count_of_persons_sql(use_age):
+    base_sql = "SELECT COUNT(*) FROM registry_insured WHERE name = ? AND surname = ?"
     if use_age:
-        base_sql += " AND age ?"
+        base_sql += " AND age = ?"
+    return base_sql
+
+
+def get_remove_person_sql(use_age):
+    base_sql = "DELETE FROM registry_insured WHERE name = ? AND surname = ?"
+    if use_age:
+        base_sql += " AND age = ?"
+    return base_sql
+
+
+def get_update_person_sql(use_age):
+    base_sql = "UPDATE registry_insured SET age = ? WHERE name = ? AND surname = ?"
+    if use_age:
+        base_sql += " AND age = ?"
     return base_sql

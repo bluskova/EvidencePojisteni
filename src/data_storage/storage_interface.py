@@ -19,13 +19,16 @@ class StorageInterface:
         pass
 
     @abstractmethod
-    def is_person_registered(self, name: str, surname: str, age: Optional[int]) -> bool:
+    def count_person_registered(self, name: str, surname: str, age: Optional[int]) -> bool:
+        pass
+
+    def is_person_registered(self, name: str, surname: str, age: Optional[int] = None) -> bool:
+        return bool(self.count_person_registered(name, surname, age))
+
+    @abstractmethod
+    def get_persons(self, name: str, surname: str) -> List[Person]:
         pass
 
     @abstractmethod
     def get_all_persons(self) -> List[Person]:
-        pass
-
-    @abstractmethod
-    def get_persons(self, name: str, surname: str) -> List[Person]:
         pass

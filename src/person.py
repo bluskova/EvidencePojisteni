@@ -1,13 +1,24 @@
+from typing import Optional
+
+
 class Person:
 
-    def __init__(self, name, surname, age=None, phone=None):
+    NAME_MAX_LEN = 15
+
+    def __init__(self, name: str, surname: str, age: Optional[int] = None, phone: Optional[int] = None):
         self.__name = name
         self.__surname = surname
         self.__age = age
         self.__phone = phone
 
     def __str__(self):
-        return f'{self.__name} {self.__surname}{", věk " if self.__age else ""}{self.__age if self.__age else ""}'
+        return f'{self.get_name(): <{NAME_MAX_LEN}}{self.get_surname(): <{NAME_MAX_LEN}}' \
+               f'{self.get_age(): <{NAME_MAX_LEN}}{self.get_phone(): <{NAME_MAX_LEN}}'
+
+    # def __eq__(self, other):
+    #     self.__name == other.__name and self.__surname == other.__surname
+    #     if self.__age and other.__age:
+    #         self.__age == other.__age
 
     def get_name(self):
         return self.__name

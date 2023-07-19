@@ -4,15 +4,14 @@ from typing import Optional
 
 from src.person import Person
 
-from src.sql_code import create_tables_sql, insert_person_sql, select_sql, select_all_sql, \
-    select_count_sql, select_count_all_sql, remove_person_sql, update_sql, \
-    get_select_count_sql
-from src.storage_interface import StorageInterface
+from src.sql_code import create_tables_sql, insert_person_sql, select_persons_sql, select_all_persons_sql, \
+    select_count_of_all_persons_sql, get_count_of_persons_sql, get_remove_person_sql
+from tests import StorageInterface
 
 
 class DbStorage(StorageInterface):
 
-    db_file = "../Data/registry.db"
+    db_file = "../../Data/registry.db"
 
     def __new__(cls):
         if not hasattr(cls, 'instance'):
@@ -39,7 +38,7 @@ class DbStorage(StorageInterface):
         conn = DbStorage.get_connection()
         with conn:
             cur = conn.cursor()
-            cur.execute(select_count_all_sql)
+            cur.execute(select_count_of_all_persons_sql)
             ret = cur.fetchone()[0]
         conn.close()
         return ret
@@ -51,26 +50,34 @@ class DbStorage(StorageInterface):
             cur.execute(insert_person_sql, person.get_as_tuple())
         conn.close()
 
-    def remove_person(self, person: Person):
-        conn = DbStorage.get_connection()
-        with conn:
-            cur = conn.cursor()
-            person_data = person.get_as_tuple()
-            if len(person_data) == 2:
-                cur.execute(remove_person_sql, person.get_as_tuple())
-            else:
-                cur.execute(remove_person2_sql, person.get_as_tuple()[0:3])
-        conn.close()
-
-    def is_person_registered(self, name: str, surname: str, age: Optional[int] = None):
+    def remove_person(self, name: str, surname: str, age: Optional[int] = None):
         conn = DbStorage.get_connection()
         with conn:
             cur = conn.cursor()
             params = (name, surname)
             if age:
                 params += (age, )
-            cur.execute(get_select_count_sql(age), params)
-            ret = bool(cur.fetchone()[0])
+            cur.execute(get_remove_person_sql(age), params)
+        conn.close()
+
+    def count_person_registered(self, name: str, surname: str, age: Optional[int] = None):
+        conn = DbStorage.get_connection()
+        with conn:
+            cur = conn.cursor()
+            params = (name, surname)
+            if age:
+                params += (age, )
+            cur.execute(get_count_of_persons_sql(age), params)
+            ret = cur.fetchone()[0]
+        conn.close()
+        return ret
+
+    def get_persons(self, name: str, surname: str):
+        conn = DbStorage.get_connection()
+        with conn:
+            cur = conn.cursor()
+            cur.execute(select_persons_sql, (name, surname))
+            ret = [Person(*r) for r in cur.fetchall()]
         conn.close()
         return ret
 
@@ -78,16 +85,7 @@ class DbStorage(StorageInterface):
         conn = DbStorage.get_connection()
         with conn:
             cur = conn.cursor()
-            cur.execute(select_all_sql)
-            ret = [Person(*r) for r in cur.fetchall()]
-        conn.close()
-        return ret
-
-    def get_persons(self, name, surname):
-        conn = DbStorage.get_connection()
-        with conn:
-            cur = conn.cursor()
-            cur.execute(select_sql, (name, surname))
+            cur.execute(select_all_persons_sql)
             ret = [Person(*r) for r in cur.fetchall()]
         conn.close()
         return ret

@@ -10,9 +10,7 @@ Dané entity jsou uloženy v paměti v kolekci "registry".
 Ukládání dat po skončení aplikace se neřeší.
 """
 
-from person import Person
-from memory_storage import MemoryStorage
-from db_storage import DbStorage
+from tests import DbStorage
 from utility_functions import *
 from src.test_data import test_data
 
@@ -21,8 +19,9 @@ from src.test_data import test_data
 registry = DbStorage()
 
 # pridani pojistenych - testovaci data
-for i in test_data:
-    registry.add_person(i)
+for person in test_data:
+    if not registry.is_person_registered(person.get_name(), person.get_surname(), person.get_age()):
+        registry.add_person(person)
 
 
 print('--------------------------------------')
@@ -31,39 +30,59 @@ print('--------------------------------------')
 
 end = False
 while not end:
-    print('\nVyberte akci:')
-    print('1 - Přidat nového pojištěného')
-    print('2 - Vypsat všechny pojištěné')
-    print('3 - Vyhledat pojištěného')
-    print('4 - Konec')
+    print()
+    for i in INSTRUCTIONS_TEXT:
+        print(i)
     instruction = input().strip()
     try:
         instruction = int(instruction)
         if instruction == 1:
-            name, surname, age, phone = load_data(age=True, phone=True)
-            if registry.is_person_registered(name, surname, age):
-                print(f'\n{name} {surname} je již uložen v evidenci. ', end='')
-            else:
-                person = Person(name, surname, age, phone)
-                registry.add_person(person)
-                print(f'\nData byla uložena. ', end='')
-            input(go_on)
-        elif instruction == 2:
             if registry.number_of_records() > 0:
                 print_persons_table(registry.get_all_persons())
             else:
-                print('Evidence neobsahuje žádného pojištěného. ', end='')
-            input(go_on)
-        elif instruction == 3:
+                print(EMPTY_REGISTRY_TEXT, end='')
+            input(GO_ON_TEXT)
+        elif instruction == 2:
             name, surname = load_data()
             if not registry.is_person_registered(name, surname):
-                print(f'\n{name} {surname} není v evidenci. ', end='')
+                print()
+                print(get_not_in_evidence_text(name, surname), end='')
             else:
                 print_persons_table(registry.get_persons(name, surname))
-            input(go_on)
+            input(GO_ON_TEXT)
+        elif instruction == 3:
+            name, surname, age, phone = load_data(use_age=True, use_phone=True)
+            if registry.is_person_registered(name, surname, age):
+                print(get_is_in_evidence_text(name, surname, age), end='')
+            else:
+                person = Person(name, surname, age, phone)
+                registry.add_person(person)
+                print()
+                print(DATA_SAVED_TEXT, end='')
+            input(GO_ON_TEXT)
         elif instruction == 4:
+            name, surname = load_data()
+            if registry.count_person_registered(name, surname) == 0:
+                print(get_not_in_evidence_text(name, surname), end='')
+            elif registry.count_person_registered(name, surname) == 1:
+                registry.remove_person(name, surname)
+                print(get_removed_text(name, surname), end='')
+            else:
+                print()
+                print(MORE_RECORDS_TEXT)
+                print_persons_table(registry.get_persons(name, surname))
+                age = load_age()
+                if registry.is_person_registered(name, surname, age):
+                    registry.remove_person(name, surname, age)
+                    print(get_removed_text(name, surname, age), end='')
+                else:
+                    print(get_not_in_evidence_text(name, surname, age), end='')
+            input(GO_ON_TEXT)
+        elif instruction == 5:
+            pass
+        elif instruction == 6:
             end = True
         else:
-            print(f'Zadal(a) jste {instruction}, prosím zadejte číslo 1 - 4!')
+            print(get_bad_instructions_text(instruction))
     except ValueError:
-        print(f'Zadal(a) jste "{instruction}", prosím zadejte číslo!')
+        print(get_bad_instructions_text(instruction))
