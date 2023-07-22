@@ -2,19 +2,21 @@ from typing import List, Optional
 
 from src.person import Person
 
+REGISTRY_MAIN = [ '--------------------------------------', 'Evidence pojištěných',
+                 '--------------------------------------']
 GO_ON_TEXT = 'Pokračujte stisknutím klávesy Enter... '
 DATA_SAVED_TEXT = 'Data byla uložena. '
 EMPTY_REGISTRY_TEXT = 'Evidence neobsahuje žádného pojištěného. '
 MORE_RECORDS_TEXT = 'V evidenci je více záznamů se zadaným jménem a příjmením. Zadejte věk osoby, kterou chcete ' \
                     'odstranit. '
 INSTRUCTIONS_TEXT = ['Vyberte akci:', '1 - Vypsat všechny pojištěné', '2 - Vyhledat pojištěného',
-                     '3 - Přidat pojištěného', '4 - Odstranit pojištěného', '5 - Editovat pojištěného', '6 - Konec']
+                     '3 - Přidat pojištěného', '4 - Odstranit pojištěného', '5 - Konec']
 
 
 def get_common_log_text(name: str, surname: str, age: Optional[int] = None):
     text = name + ' ' + surname
     if age:
-        text += ', věk {age}'
+        text += ', věk ' + str(age)
     return text
 
 
@@ -79,7 +81,7 @@ def load_phone():
     return phone
 
 
-def load_data(use_age: Optional[bool] = False, use_phone: Optional[bool] = False):
+def load_person_data(use_age: Optional[bool] = False, use_phone: Optional[bool] = False):
     data = [load_name(), load_name(use_surname=True)]
     if use_age:
         data.append(load_age())

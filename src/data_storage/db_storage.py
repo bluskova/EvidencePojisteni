@@ -1,3 +1,4 @@
+import os
 import sqlite3
 from sqlite3 import Error as SQLError
 from typing import Optional
@@ -5,13 +6,13 @@ from typing import Optional
 from src.data_storage.storage_interface import StorageInterface
 from src.person import Person
 
-from src.sql_code import create_tables_sql, insert_person_sql, select_persons_sql, select_all_persons_sql, \
-    select_count_of_all_persons_sql, get_count_of_persons_sql, get_remove_person_sql
+from src.sql_code import CREATE_TABLE_SQL, INSERT_PERSON_SQL, SELECT_PERSONS_SQL, SELECT_ALL_PERSONS_SQL, \
+    SELECT_COUNT_OF_ALL_PERSONS_SQL, get_count_of_persons_sql, get_remove_person_sql
 
 
 class DbStorage(StorageInterface):
 
-    db_file = "../../Data/registry.db"
+    db_file = os.getcwd().removesuffix("src") + "Data/registry.db"
 
     def __new__(cls):
         if not hasattr(cls, 'instance'):
@@ -22,8 +23,7 @@ class DbStorage(StorageInterface):
         conn = DbStorage.get_connection()
         with conn:
             cur = conn.cursor()
-            for sql in create_tables_sql:
-                cur.execute(sql)
+            cur.execute(CREATE_TABLE_SQL)
         conn.close()
 
     @classmethod
@@ -32,13 +32,12 @@ class DbStorage(StorageInterface):
             return sqlite3.connect(DbStorage.db_file)
         except SQLError:
             print('Chyba! Nelze vytvořit spojení s databází.')
-            raise
 
     def number_of_records(self):
         conn = DbStorage.get_connection()
         with conn:
             cur = conn.cursor()
-            cur.execute(select_count_of_all_persons_sql)
+            cur.execute(SELECT_COUNT_OF_ALL_PERSONS_SQL)
             ret = cur.fetchone()[0]
         conn.close()
         return ret
@@ -47,7 +46,7 @@ class DbStorage(StorageInterface):
         conn = DbStorage.get_connection()
         with conn:
             cur = conn.cursor()
-            cur.execute(insert_person_sql, person.get_as_tuple())
+            cur.execute(INSERT_PERSON_SQL, person.get_as_tuple())
         conn.close()
 
     def remove_person(self, name: str, surname: str, age: Optional[int] = None):
@@ -76,7 +75,7 @@ class DbStorage(StorageInterface):
         conn = DbStorage.get_connection()
         with conn:
             cur = conn.cursor()
-            cur.execute(select_persons_sql, (name, surname))
+            cur.execute(SELECT_PERSONS_SQL, (name, surname))
             ret = [Person(*r) for r in cur.fetchall()]
         conn.close()
         return ret
@@ -85,7 +84,7 @@ class DbStorage(StorageInterface):
         conn = DbStorage.get_connection()
         with conn:
             cur = conn.cursor()
-            cur.execute(select_all_persons_sql)
+            cur.execute(SELECT_ALL_PERSONS_SQL)
             ret = [Person(*r) for r in cur.fetchall()]
         conn.close()
         return ret

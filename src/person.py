@@ -12,8 +12,8 @@ class Person:
         self.__phone = phone
 
     def __str__(self):
-        return f'{self.get_name(): <{NAME_MAX_LEN}}{self.get_surname(): <{NAME_MAX_LEN}}' \
-               f'{self.get_age(): <{NAME_MAX_LEN}}{self.get_phone(): <{NAME_MAX_LEN}}'
+        return f'{self.get_name(): <{Person.NAME_MAX_LEN}}{self.get_surname(): <{Person.NAME_MAX_LEN}}' \
+               f'{self.get_age(): <{Person.NAME_MAX_LEN}}{self.get_phone(): <{Person.NAME_MAX_LEN}}'
 
     # def __eq__(self, other):
     #     self.__name == other.__name and self.__surname == other.__surname
