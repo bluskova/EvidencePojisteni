@@ -1,10 +1,12 @@
 from abc import abstractmethod
 from typing import Optional, List
-
 from src.person import Person
 
 
 class StorageInterface:
+    """
+    Rozhradní pro práci s databází.
+    """
 
     @abstractmethod
     def number_of_records(self) -> int:

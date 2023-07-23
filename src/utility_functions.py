@@ -1,5 +1,4 @@
 from typing import List, Optional, Any
-
 from src.data_storage.db_storage import DbStorage
 from src.person import Person
 
@@ -72,8 +71,8 @@ def get_end_of_database_text(use_database: bool):
 def load_name(use_surname: Optional[bool] = None):
     """
     Funkce pro načítání jména nebo příjmení ze vstupu z klávesnice.
-    :param use_surname:
-    :return:
+    :param use_surname: parametr upřesňuje, zda se načítá jméno nebo příjmení
+    :return: str, načtené jméno, případně příjmení
     """
     name_ok = False
     name = None
@@ -89,8 +88,8 @@ def load_name(use_surname: Optional[bool] = None):
 
 def load_age():
     """
-    Funkce pro načítání věku ze vstupu z klávesnice.
-    :return:
+    Funkce načítá věk ze vstupu z klávesnice.
+    :return: int, věk z intervalu [0, 130]
     """
     age_ok = False
     age = None
@@ -109,8 +108,8 @@ def load_age():
 
 def load_phone():
     """
-    Funkce pro načítání telefonního čísla ze vstupu z klávesnice.
-    :return:
+    Funkce načítá telefonní číslo ze vstupu z klávesnice.
+    :return: int, 9-místné telefonní číslo
     """
     phone_ok = False
     phone = None

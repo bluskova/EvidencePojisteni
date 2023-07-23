@@ -81,13 +81,12 @@ while not end:
             input(GO_ON_TEXT)
         elif instruction == 4:
             name, surname = load_person_data()
-            if registry.count_person_registered(name, surname) == 0:
+            if not registry.is_person_registered(name, surname):
                 print(get_not_in_evidence_text(name, surname), end='')
             elif registry.count_person_registered(name, surname) == 1:
                 registry.remove_person(name, surname)
                 print(get_removed_text(name, surname), end='')
             else:
-                print()
                 print(MORE_RECORDS_TEXT)
                 print_persons_table(registry.get_persons(name, surname))
                 age = load_age()

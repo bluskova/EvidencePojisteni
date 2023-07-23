@@ -2,10 +2,20 @@ from typing import Optional
 
 
 class Person:
+    """
+    Třída Person reprezentuje osobu pojištěnce.
+    """
 
     NAME_MAX_LEN = 15
 
     def __init__(self, name: str, surname: str, age: Optional[int] = None, phone: Optional[int] = None):
+        """
+        Konstruktor - vrátí instanci třídy Person.
+        :param name:
+        :param surname:
+        :param age:
+        :param phone:
+        """
         self.__name = name
         self.__surname = surname
         self.__age = age
@@ -14,11 +24,6 @@ class Person:
     def __str__(self):
         return f'{self.get_name(): <{Person.NAME_MAX_LEN}}{self.get_surname(): <{Person.NAME_MAX_LEN}}' \
                f'{self.get_age(): <{Person.NAME_MAX_LEN}}{self.get_phone(): <{Person.NAME_MAX_LEN}}'
-
-    # def __eq__(self, other):
-    #     self.__name == other.__name and self.__surname == other.__surname
-    #     if self.__age and other.__age:
-    #         self.__age == other.__age
 
     def get_name(self):
         return self.__name

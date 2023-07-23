@@ -2,10 +2,8 @@ import os
 import sqlite3
 from sqlite3 import Error as SQLError
 from typing import Optional
-
 from src.data_storage.storage_interface import StorageInterface
 from src.person import Person
-
 from src.sql_code import CREATE_TABLE_SQL, INSERT_PERSON_SQL, SELECT_PERSONS_SQL, SELECT_ALL_PERSONS_SQL, \
     SELECT_COUNT_OF_ALL_PERSONS_SQL, get_count_of_persons_sql, get_remove_person_sql
 
