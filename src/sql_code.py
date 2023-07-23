@@ -1,5 +1,6 @@
-CREATE_TABLE_SQL = "CREATE TABLE IF NOT EXISTS registry_persons (insured_id INTEGER, name TEXT, surname TEXT, age " \
-                   "INTEGER, phone INTEGER, PRIMARY KEY (insured_id AUTOINCREMENT))"
+CREATE_TABLE_SQL = "CREATE TABLE IF NOT EXISTS registry_persons (insured_id INTEGER, name TEXT NOT NULL, " \
+                   "surname TEXT NOT NULL, age INTEGER NOT NULL, phone INTEGER NOT NULL, " \
+                   "PRIMARY KEY (insured_id AUTOINCREMENT))"
 INSERT_PERSON_SQL = "INSERT INTO registry_persons (name, surname, age, phone) VALUES (?, ?, ?, ?)"
 SELECT_PERSONS_SQL = "SELECT name, surname, age, phone FROM registry_persons WHERE name = ? AND surname = ?"
 SELECT_ALL_PERSONS_SQL = "SELECT name, surname, age, phone FROM registry_persons"

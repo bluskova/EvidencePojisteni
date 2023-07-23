@@ -1,19 +1,23 @@
 """
 Konzolová aplikace pro evidenci pojištěných osob.
 
-Aplikace obsahuje správu pojištěných (pojištěné osoby, např. "Jan Novák"):
-Každou osobu jednoznačně identifikuje jméno, příjmení a věk.
+Aplikace obsahuje správu pojištěných (pojištěné osoby, např. "Jan Novák").
+Každou osobu jednoznačně identifikuje jméno, příjmení a věk
+(dvě osoby, které mají shodné jméno, příjmení i věk nemohou být zaevidovány).
+
 Evidence nabízí:
-    Zobrazení seznamu všech pojištěných
-    Vyhledání pojištěného - podle jména a příjmení, v případě shody podle věku
-    Přidání pojištěného - eviduje se jméno, příjmení, věk a telefonní číslo
-    Odstranění pojištěného - podle jména a příjmení, v případě shody podle věku
+Zobrazení seznamu všech pojištěných
+Vyhledání pojištěného - podle jména a příjmení, v případě shody podle věku
+Přidání pojištěného - eviduje se jméno, příjmení, věk a telefonní číslo
+Odstranění pojištěného - podle jména a příjmení, v případě shody podle věku
+Ukončení evidence
 
 Podle volby uživatele jsou dané entity uloženy buď v databázi anebo v paměti v kolekci.
 Aplikace uživateli nabízí vložení testovacích dat do evidence.
+Defaultní nastavení je ukládání kolekce do paměti bez použití testovacích osob.
 
-Ukládání dat po skončení aplikace se neřeší.
-Po skončení aplikace zůstanou data buď uložena v databázovém souboru při použití databáze.
+V případě použití databáze jsou data po skončení aplikace uložena v souboru "registry.db".
+V případě ukládání entit do paměti aplikace uložení dat po skončení aplikace neřeší.
 """
 
 from data_storage.db_storage import DbStorage
@@ -25,28 +29,24 @@ from sqlite3 import Error as SQLError
 
 print(*REGISTRY_MAIN, sep='\n')
 
-print()
-use_database = input('Chcete použít databázi? [ano / ne]: ').strip()
-if use_database == 'ano':
+use_database = get_instructions_bool('Chcete použít databázi?')
+if use_database:
     registry = DbStorage()
-    print(f'Evidence pojištěných je vytvořena. Data jsou uložena v souboru "{DbStorage.db_file}". ', end='')
 else:
     registry = MemoryStorage()
-    print('Evidence pojištěných je vytvořena. Data budou uložena v paměti, po ukončení programu smazána. ', end='')
+print(get_evidence_created_text(use_database))
 input(GO_ON_TEXT)
 
-print()
-use_test_data = input('Chcete do evidence vložit testovací data? [ano / ne]: ').strip()
-try:
-    if use_test_data == 'ano':
+use_test_data = get_instructions_bool('Chcete do evidence vložit testovací data?')
+if use_test_data:
+    try:
         for person in test_data:
             if not registry.is_person_registered(person.get_name(), person.get_surname(), person.get_age()):
                 registry.add_person(person)
-        print('Testovací data jsou uložena v evidenci. ', end='')
-    print('Evidence je připravena k použití. ', end='')
-    input(GO_ON_TEXT)
-except SQLError:
-    print('Chyba databáze při vkládání testovacích dat.')
+    except SQLError:
+        print(DATABASE_ERROR_TEXT)
+print(get_insert_test_data_text(use_test_data))
+input(GO_ON_TEXT)
 
 end = False
 while not end:
@@ -55,6 +55,7 @@ while not end:
     instruction = input().strip()
     try:
         instruction = int(instruction)
+        print()
         if instruction == 1:
             if registry.number_of_records() > 0:
                 print_persons_table(registry.get_all_persons())
@@ -64,7 +65,6 @@ while not end:
         elif instruction == 2:
             name, surname = load_person_data()
             if not registry.is_person_registered(name, surname):
-                print()
                 print(get_not_in_evidence_text(name, surname), end='')
             else:
                 print_persons_table(registry.get_persons(name, surname))
@@ -99,9 +99,10 @@ while not end:
             input(GO_ON_TEXT)
         elif instruction == 5:
             end = True
+            print(get_end_of_database_text(use_database))
         else:
             print(get_bad_instructions_text(instruction))
     except ValueError:
         print(get_bad_instructions_text(instruction))
     except SQLError:
-        print('Chyba databáze. ')
+        print(DATABASE_ERROR_TEXT)
