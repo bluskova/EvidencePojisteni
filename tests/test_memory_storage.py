@@ -1,6 +1,6 @@
 from unittest import TestCase
 
-from src.data_storage.memory_storage import MemoryStorage
+from src.dataStorage.memory_storage import MemoryStorage
 from src.person import Person
 
 

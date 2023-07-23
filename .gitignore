@@ -6,3 +6,4 @@
 /keyboard
 /pyvenv.cfg
 /src/__pycache__
+/src/dataStorage/__pycache__

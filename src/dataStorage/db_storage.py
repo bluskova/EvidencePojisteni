@@ -18,7 +18,6 @@ class DbStorage(StorageInterface):
         return cls.instance
 
     def __init__(self):
-        print(DbStorage.db_file)
         conn = DbStorage.get_connection()
         with conn:
             cur = conn.cursor()
