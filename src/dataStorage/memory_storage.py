@@ -1,5 +1,5 @@
 from typing import Optional
-from src.data_storage.storage_interface import StorageInterface
+from src.dataStorage.storage_interface import StorageInterface
 from src.person import Person
 
 
