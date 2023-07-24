@@ -18,4 +18,4 @@ Defaultní nastavení je ukládání kolekce do paměti bez použití testovací
 V případě použití databáze jsou data po skončení aplikace uložena v souboru "registry.db".
 V případě ukládání entit do paměti aplikace uložení dat po skončení aplikace neřeší.
 
-Aplikace se spustí shell skriptem run_app.sh.
+Aplikace se spouští shell skriptem "run_app.sh" nebo lze v pythonu spustit "run.py".

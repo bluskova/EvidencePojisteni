@@ -245,9 +245,9 @@
 </span><span id="L-129"><a href="#L-129"><span class="linenos">129</span></a><span class="k">def</span> <span class="nf">load_person_data</span><span class="p">(</span><span class="n">use_age</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">bool</span><span class="p">]</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">use_phone</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">bool</span><span class="p">]</span> <span class="o">=</span> <span class="kc">False</span><span class="p">):</span>
 </span><span id="L-130"><a href="#L-130"><span class="linenos">130</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 </span><span id="L-131"><a href="#L-131"><span class="linenos">131</span></a><span class="sd">    Funkce, která načte jméno, příjmení, případně věk, případně telefonního číslo ze vstupu z klávesnice.</span>
-</span><span id="L-132"><a href="#L-132"><span class="linenos">132</span></a><span class="sd">    :param use_age:</span>
-</span><span id="L-133"><a href="#L-133"><span class="linenos">133</span></a><span class="sd">    :param use_phone:</span>
-</span><span id="L-134"><a href="#L-134"><span class="linenos">134</span></a><span class="sd">    :return:</span>
+</span><span id="L-132"><a href="#L-132"><span class="linenos">132</span></a><span class="sd">    :param use_age: proměnná označuje, zda chceme načítat i věk</span>
+</span><span id="L-133"><a href="#L-133"><span class="linenos">133</span></a><span class="sd">    :param use_phone: proměnná označuje, zda chceme načítat i telefonní číslo</span>
+</span><span id="L-134"><a href="#L-134"><span class="linenos">134</span></a><span class="sd">    :return: seznam obsahující jméno, příjmení, případně věk a telefonní číslo</span>
 </span><span id="L-135"><a href="#L-135"><span class="linenos">135</span></a><span class="sd">    &quot;&quot;&quot;</span>
 </span><span id="L-136"><a href="#L-136"><span class="linenos">136</span></a>    <span class="n">data</span> <span class="o">=</span> <span class="p">[</span><span class="n">load_name</span><span class="p">(),</span> <span class="n">load_name</span><span class="p">(</span><span class="n">use_surname</span><span class="o">=</span><span class="kc">True</span><span class="p">)]</span>
 </span><span id="L-137"><a href="#L-137"><span class="linenos">137</span></a>    <span class="k">if</span> <span class="n">use_age</span><span class="p">:</span>
@@ -262,12 +262,11 @@
 </span><span id="L-146"><a href="#L-146"><span class="linenos">146</span></a><span class="sd">    Funkce vytiskne seznam údajů zadaných osob do přehledné tabulky s hlavičkou.</span>
 </span><span id="L-147"><a href="#L-147"><span class="linenos">147</span></a><span class="sd">    Tabulka obsahuje 4 sloupce: Jméno, Příjmení, Věk a Telefonní číslo.</span>
 </span><span id="L-148"><a href="#L-148"><span class="linenos">148</span></a><span class="sd">    :param persons_list: seznam osob, jejichž údaje mají být vypsány do tabulky</span>
-</span><span id="L-149"><a href="#L-149"><span class="linenos">149</span></a><span class="sd">    :return:</span>
-</span><span id="L-150"><a href="#L-150"><span class="linenos">150</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="L-151"><a href="#L-151"><span class="linenos">151</span></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">column</span><span class="o">.</span><span class="n">ljust</span><span class="p">(</span><span class="n">Person</span><span class="o">.</span><span class="n">NAME_MAX_LEN</span><span class="p">)</span> <span class="k">for</span> <span class="n">column</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;Jméno&#39;</span><span class="p">,</span> <span class="s1">&#39;Příjmení&#39;</span><span class="p">,</span> <span class="s1">&#39;Věk&#39;</span><span class="p">,</span> <span class="s1">&#39;Telefonní číslo&#39;</span><span class="p">]))</span>
-</span><span id="L-152"><a href="#L-152"><span class="linenos">152</span></a>    <span class="k">for</span> <span class="n">person</span> <span class="ow">in</span> <span class="n">persons_list</span><span class="p">:</span>
-</span><span id="L-153"><a href="#L-153"><span class="linenos">153</span></a>        <span class="nb">print</span><span class="p">(</span><span class="n">person</span><span class="p">)</span>
-</span><span id="L-154"><a href="#L-154"><span class="linenos">154</span></a>    <span class="nb">print</span><span class="p">()</span>
+</span><span id="L-149"><a href="#L-149"><span class="linenos">149</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="L-150"><a href="#L-150"><span class="linenos">150</span></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">column</span><span class="o">.</span><span class="n">ljust</span><span class="p">(</span><span class="n">Person</span><span class="o">.</span><span class="n">NAME_MAX_LEN</span><span class="p">)</span> <span class="k">for</span> <span class="n">column</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;Jméno&#39;</span><span class="p">,</span> <span class="s1">&#39;Příjmení&#39;</span><span class="p">,</span> <span class="s1">&#39;Věk&#39;</span><span class="p">,</span> <span class="s1">&#39;Telefonní číslo&#39;</span><span class="p">]))</span>
+</span><span id="L-151"><a href="#L-151"><span class="linenos">151</span></a>    <span class="k">for</span> <span class="n">person</span> <span class="ow">in</span> <span class="n">persons_list</span><span class="p">:</span>
+</span><span id="L-152"><a href="#L-152"><span class="linenos">152</span></a>        <span class="nb">print</span><span class="p">(</span><span class="n">person</span><span class="p">)</span>
+</span><span id="L-153"><a href="#L-153"><span class="linenos">153</span></a>    <span class="nb">print</span><span class="p">()</span>
 </span></pre></div>
 
 
@@ -694,9 +693,9 @@
             <div class="pdoc-code codehilite"><pre><span></span><span id="load_person_data-130"><a href="#load_person_data-130"><span class="linenos">130</span></a><span class="k">def</span> <span class="nf">load_person_data</span><span class="p">(</span><span class="n">use_age</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">bool</span><span class="p">]</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">use_phone</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">bool</span><span class="p">]</span> <span class="o">=</span> <span class="kc">False</span><span class="p">):</span>
 </span><span id="load_person_data-131"><a href="#load_person_data-131"><span class="linenos">131</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 </span><span id="load_person_data-132"><a href="#load_person_data-132"><span class="linenos">132</span></a><span class="sd">    Funkce, která načte jméno, příjmení, případně věk, případně telefonního číslo ze vstupu z klávesnice.</span>
-</span><span id="load_person_data-133"><a href="#load_person_data-133"><span class="linenos">133</span></a><span class="sd">    :param use_age:</span>
-</span><span id="load_person_data-134"><a href="#load_person_data-134"><span class="linenos">134</span></a><span class="sd">    :param use_phone:</span>
-</span><span id="load_person_data-135"><a href="#load_person_data-135"><span class="linenos">135</span></a><span class="sd">    :return:</span>
+</span><span id="load_person_data-133"><a href="#load_person_data-133"><span class="linenos">133</span></a><span class="sd">    :param use_age: proměnná označuje, zda chceme načítat i věk</span>
+</span><span id="load_person_data-134"><a href="#load_person_data-134"><span class="linenos">134</span></a><span class="sd">    :param use_phone: proměnná označuje, zda chceme načítat i telefonní číslo</span>
+</span><span id="load_person_data-135"><a href="#load_person_data-135"><span class="linenos">135</span></a><span class="sd">    :return: seznam obsahující jméno, příjmení, případně věk a telefonní číslo</span>
 </span><span id="load_person_data-136"><a href="#load_person_data-136"><span class="linenos">136</span></a><span class="sd">    &quot;&quot;&quot;</span>
 </span><span id="load_person_data-137"><a href="#load_person_data-137"><span class="linenos">137</span></a>    <span class="n">data</span> <span class="o">=</span> <span class="p">[</span><span class="n">load_name</span><span class="p">(),</span> <span class="n">load_name</span><span class="p">(</span><span class="n">use_surname</span><span class="o">=</span><span class="kc">True</span><span class="p">)]</span>
 </span><span id="load_person_data-138"><a href="#load_person_data-138"><span class="linenos">138</span></a>    <span class="k">if</span> <span class="n">use_age</span><span class="p">:</span>
@@ -712,11 +711,15 @@
 <h6 id="parameters">Parameters</h6>
 
 <ul>
-<li><strong>use_age</strong>: </li>
-<li><strong>use_phone</strong>: </li>
+<li><strong>use_age</strong>:  proměnná označuje, zda chceme načítat i věk</li>
+<li><strong>use_phone</strong>:  proměnná označuje, zda chceme načítat i telefonní číslo</li>
 </ul>
 
 <h6 id="returns">Returns</h6>
+
+<blockquote>
+  <p>seznam obsahující jméno, příjmení, případně věk a telefonní číslo</p>
+</blockquote>
 </div>
 
 
@@ -737,12 +740,11 @@
 </span><span id="print_persons_table-147"><a href="#print_persons_table-147"><span class="linenos">147</span></a><span class="sd">    Funkce vytiskne seznam údajů zadaných osob do přehledné tabulky s hlavičkou.</span>
 </span><span id="print_persons_table-148"><a href="#print_persons_table-148"><span class="linenos">148</span></a><span class="sd">    Tabulka obsahuje 4 sloupce: Jméno, Příjmení, Věk a Telefonní číslo.</span>
 </span><span id="print_persons_table-149"><a href="#print_persons_table-149"><span class="linenos">149</span></a><span class="sd">    :param persons_list: seznam osob, jejichž údaje mají být vypsány do tabulky</span>
-</span><span id="print_persons_table-150"><a href="#print_persons_table-150"><span class="linenos">150</span></a><span class="sd">    :return:</span>
-</span><span id="print_persons_table-151"><a href="#print_persons_table-151"><span class="linenos">151</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="print_persons_table-152"><a href="#print_persons_table-152"><span class="linenos">152</span></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">column</span><span class="o">.</span><span class="n">ljust</span><span class="p">(</span><span class="n">Person</span><span class="o">.</span><span class="n">NAME_MAX_LEN</span><span class="p">)</span> <span class="k">for</span> <span class="n">column</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;Jméno&#39;</span><span class="p">,</span> <span class="s1">&#39;Příjmení&#39;</span><span class="p">,</span> <span class="s1">&#39;Věk&#39;</span><span class="p">,</span> <span class="s1">&#39;Telefonní číslo&#39;</span><span class="p">]))</span>
-</span><span id="print_persons_table-153"><a href="#print_persons_table-153"><span class="linenos">153</span></a>    <span class="k">for</span> <span class="n">person</span> <span class="ow">in</span> <span class="n">persons_list</span><span class="p">:</span>
-</span><span id="print_persons_table-154"><a href="#print_persons_table-154"><span class="linenos">154</span></a>        <span class="nb">print</span><span class="p">(</span><span class="n">person</span><span class="p">)</span>
-</span><span id="print_persons_table-155"><a href="#print_persons_table-155"><span class="linenos">155</span></a>    <span class="nb">print</span><span class="p">()</span>
+</span><span id="print_persons_table-150"><a href="#print_persons_table-150"><span class="linenos">150</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="print_persons_table-151"><a href="#print_persons_table-151"><span class="linenos">151</span></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">column</span><span class="o">.</span><span class="n">ljust</span><span class="p">(</span><span class="n">Person</span><span class="o">.</span><span class="n">NAME_MAX_LEN</span><span class="p">)</span> <span class="k">for</span> <span class="n">column</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;Jméno&#39;</span><span class="p">,</span> <span class="s1">&#39;Příjmení&#39;</span><span class="p">,</span> <span class="s1">&#39;Věk&#39;</span><span class="p">,</span> <span class="s1">&#39;Telefonní číslo&#39;</span><span class="p">]))</span>
+</span><span id="print_persons_table-152"><a href="#print_persons_table-152"><span class="linenos">152</span></a>    <span class="k">for</span> <span class="n">person</span> <span class="ow">in</span> <span class="n">persons_list</span><span class="p">:</span>
+</span><span id="print_persons_table-153"><a href="#print_persons_table-153"><span class="linenos">153</span></a>        <span class="nb">print</span><span class="p">(</span><span class="n">person</span><span class="p">)</span>
+</span><span id="print_persons_table-154"><a href="#print_persons_table-154"><span class="linenos">154</span></a>    <span class="nb">print</span><span class="p">()</span>
 </span></pre></div>
 
 
@@ -754,8 +756,6 @@ Tabulka obsahuje 4 sloupce: Jméno, Příjmení, Věk a Telefonní číslo.</p>
 <ul>
 <li><strong>persons_list</strong>:  seznam osob, jejichž údaje mají být vypsány do tabulky</li>
 </ul>
-
-<h6 id="returns">Returns</h6>
 </div>
 
 

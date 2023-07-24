@@ -90,11 +90,11 @@
 </span><span id="L-10"><a href="#L-10"><span class="linenos">10</span></a>
 </span><span id="L-11"><a href="#L-11"><span class="linenos">11</span></a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">surname</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">age</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">phone</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
 </span><span id="L-12"><a href="#L-12"><span class="linenos">12</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="L-13"><a href="#L-13"><span class="linenos">13</span></a><span class="sd">        Konstruktor - vrátí instanci třídy Person.</span>
-</span><span id="L-14"><a href="#L-14"><span class="linenos">14</span></a><span class="sd">        :param name:</span>
-</span><span id="L-15"><a href="#L-15"><span class="linenos">15</span></a><span class="sd">        :param surname:</span>
-</span><span id="L-16"><a href="#L-16"><span class="linenos">16</span></a><span class="sd">        :param age:</span>
-</span><span id="L-17"><a href="#L-17"><span class="linenos">17</span></a><span class="sd">        :param phone:</span>
+</span><span id="L-13"><a href="#L-13"><span class="linenos">13</span></a><span class="sd">        Konstruktor vrátí instanci třídy Person.</span>
+</span><span id="L-14"><a href="#L-14"><span class="linenos">14</span></a><span class="sd">        :param name: jméno</span>
+</span><span id="L-15"><a href="#L-15"><span class="linenos">15</span></a><span class="sd">        :param surname: příjmení</span>
+</span><span id="L-16"><a href="#L-16"><span class="linenos">16</span></a><span class="sd">        :param age: nepovinná proměnná, věk</span>
+</span><span id="L-17"><a href="#L-17"><span class="linenos">17</span></a><span class="sd">        :param phone: nepovinná proměnná, telefonní číslo</span>
 </span><span id="L-18"><a href="#L-18"><span class="linenos">18</span></a><span class="sd">        &quot;&quot;&quot;</span>
 </span><span id="L-19"><a href="#L-19"><span class="linenos">19</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">__name</span> <span class="o">=</span> <span class="n">name</span>
 </span><span id="L-20"><a href="#L-20"><span class="linenos">20</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">__surname</span> <span class="o">=</span> <span class="n">surname</span>
@@ -102,28 +102,36 @@
 </span><span id="L-22"><a href="#L-22"><span class="linenos">22</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">__phone</span> <span class="o">=</span> <span class="n">phone</span>
 </span><span id="L-23"><a href="#L-23"><span class="linenos">23</span></a>
 </span><span id="L-24"><a href="#L-24"><span class="linenos">24</span></a>    <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-</span><span id="L-25"><a href="#L-25"><span class="linenos">25</span></a>        <span class="k">return</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">get_name</span><span class="p">()</span><span class="si">:</span><span class="s1"> &lt;</span><span class="si">{</span><span class="n">Person</span><span class="o">.</span><span class="n">NAME_MAX_LEN</span><span class="si">}}{</span><span class="bp">self</span><span class="o">.</span><span class="n">get_surname</span><span class="p">()</span><span class="si">:</span><span class="s1"> &lt;</span><span class="si">{</span><span class="n">Person</span><span class="o">.</span><span class="n">NAME_MAX_LEN</span><span class="si">}}</span><span class="s1">&#39;</span> \
-</span><span id="L-26"><a href="#L-26"><span class="linenos">26</span></a>               <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">get_age</span><span class="p">()</span><span class="si">:</span><span class="s1"> &lt;</span><span class="si">{</span><span class="n">Person</span><span class="o">.</span><span class="n">NAME_MAX_LEN</span><span class="si">}}{</span><span class="bp">self</span><span class="o">.</span><span class="n">get_phone</span><span class="p">()</span><span class="si">:</span><span class="s1"> &lt;</span><span class="si">{</span><span class="n">Person</span><span class="o">.</span><span class="n">NAME_MAX_LEN</span><span class="si">}}</span><span class="s1">&#39;</span>
-</span><span id="L-27"><a href="#L-27"><span class="linenos">27</span></a>
-</span><span id="L-28"><a href="#L-28"><span class="linenos">28</span></a>    <span class="k">def</span> <span class="nf">get_name</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-</span><span id="L-29"><a href="#L-29"><span class="linenos">29</span></a>        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__name</span>
-</span><span id="L-30"><a href="#L-30"><span class="linenos">30</span></a>
-</span><span id="L-31"><a href="#L-31"><span class="linenos">31</span></a>    <span class="k">def</span> <span class="nf">get_surname</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-</span><span id="L-32"><a href="#L-32"><span class="linenos">32</span></a>        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__surname</span>
-</span><span id="L-33"><a href="#L-33"><span class="linenos">33</span></a>
-</span><span id="L-34"><a href="#L-34"><span class="linenos">34</span></a>    <span class="k">def</span> <span class="nf">get_age</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-</span><span id="L-35"><a href="#L-35"><span class="linenos">35</span></a>        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__age</span>
-</span><span id="L-36"><a href="#L-36"><span class="linenos">36</span></a>
-</span><span id="L-37"><a href="#L-37"><span class="linenos">37</span></a>    <span class="k">def</span> <span class="nf">get_phone</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-</span><span id="L-38"><a href="#L-38"><span class="linenos">38</span></a>        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__phone</span>
-</span><span id="L-39"><a href="#L-39"><span class="linenos">39</span></a>
-</span><span id="L-40"><a href="#L-40"><span class="linenos">40</span></a>    <span class="k">def</span> <span class="nf">get_as_tuple</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-</span><span id="L-41"><a href="#L-41"><span class="linenos">41</span></a>        <span class="n">ret</span> <span class="o">=</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__name</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">__surname</span><span class="p">)</span>
-</span><span id="L-42"><a href="#L-42"><span class="linenos">42</span></a>        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">__age</span><span class="p">:</span>
-</span><span id="L-43"><a href="#L-43"><span class="linenos">43</span></a>            <span class="n">ret</span> <span class="o">+=</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__age</span><span class="p">,)</span>
-</span><span id="L-44"><a href="#L-44"><span class="linenos">44</span></a>        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">__phone</span><span class="p">:</span>
-</span><span id="L-45"><a href="#L-45"><span class="linenos">45</span></a>            <span class="n">ret</span> <span class="o">+=</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__phone</span><span class="p">,)</span>
-</span><span id="L-46"><a href="#L-46"><span class="linenos">46</span></a>        <span class="k">return</span> <span class="n">ret</span>
+</span><span id="L-25"><a href="#L-25"><span class="linenos">25</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="L-26"><a href="#L-26"><span class="linenos">26</span></a><span class="sd">        Textová reprezentace objektu. Používá se pro vypisování osob do tabulky.</span>
+</span><span id="L-27"><a href="#L-27"><span class="linenos">27</span></a><span class="sd">        :return: f string - jméno, příjmení, věk a telefonní číslo jako sloupce tabulky o šířce NAME_MAX_LEN</span>
+</span><span id="L-28"><a href="#L-28"><span class="linenos">28</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="L-29"><a href="#L-29"><span class="linenos">29</span></a>        <span class="k">return</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">get_name</span><span class="p">()</span><span class="si">:</span><span class="s1"> &lt;</span><span class="si">{</span><span class="n">Person</span><span class="o">.</span><span class="n">NAME_MAX_LEN</span><span class="si">}}{</span><span class="bp">self</span><span class="o">.</span><span class="n">get_surname</span><span class="p">()</span><span class="si">:</span><span class="s1"> &lt;</span><span class="si">{</span><span class="n">Person</span><span class="o">.</span><span class="n">NAME_MAX_LEN</span><span class="si">}}</span><span class="s1">&#39;</span> \
+</span><span id="L-30"><a href="#L-30"><span class="linenos">30</span></a>               <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">get_age</span><span class="p">()</span><span class="si">:</span><span class="s1"> &lt;</span><span class="si">{</span><span class="n">Person</span><span class="o">.</span><span class="n">NAME_MAX_LEN</span><span class="si">}}{</span><span class="bp">self</span><span class="o">.</span><span class="n">get_phone</span><span class="p">()</span><span class="si">:</span><span class="s1"> &lt;</span><span class="si">{</span><span class="n">Person</span><span class="o">.</span><span class="n">NAME_MAX_LEN</span><span class="si">}}</span><span class="s1">&#39;</span>
+</span><span id="L-31"><a href="#L-31"><span class="linenos">31</span></a>
+</span><span id="L-32"><a href="#L-32"><span class="linenos">32</span></a>    <span class="k">def</span> <span class="nf">get_name</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span><span id="L-33"><a href="#L-33"><span class="linenos">33</span></a>        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__name</span>
+</span><span id="L-34"><a href="#L-34"><span class="linenos">34</span></a>
+</span><span id="L-35"><a href="#L-35"><span class="linenos">35</span></a>    <span class="k">def</span> <span class="nf">get_surname</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span><span id="L-36"><a href="#L-36"><span class="linenos">36</span></a>        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__surname</span>
+</span><span id="L-37"><a href="#L-37"><span class="linenos">37</span></a>
+</span><span id="L-38"><a href="#L-38"><span class="linenos">38</span></a>    <span class="k">def</span> <span class="nf">get_age</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span><span id="L-39"><a href="#L-39"><span class="linenos">39</span></a>        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__age</span>
+</span><span id="L-40"><a href="#L-40"><span class="linenos">40</span></a>
+</span><span id="L-41"><a href="#L-41"><span class="linenos">41</span></a>    <span class="k">def</span> <span class="nf">get_phone</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span><span id="L-42"><a href="#L-42"><span class="linenos">42</span></a>        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__phone</span>
+</span><span id="L-43"><a href="#L-43"><span class="linenos">43</span></a>
+</span><span id="L-44"><a href="#L-44"><span class="linenos">44</span></a>    <span class="k">def</span> <span class="nf">get_as_tuple</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span><span id="L-45"><a href="#L-45"><span class="linenos">45</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="L-46"><a href="#L-46"><span class="linenos">46</span></a><span class="sd">        Metoda, která navrátí parametry objektu.</span>
+</span><span id="L-47"><a href="#L-47"><span class="linenos">47</span></a><span class="sd">        :return: tuple obsahující jméno a příjmení, případně věk, případně telefonní číslo</span>
+</span><span id="L-48"><a href="#L-48"><span class="linenos">48</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="L-49"><a href="#L-49"><span class="linenos">49</span></a>        <span class="n">ret</span> <span class="o">=</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__name</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">__surname</span><span class="p">)</span>
+</span><span id="L-50"><a href="#L-50"><span class="linenos">50</span></a>        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">__age</span><span class="p">:</span>
+</span><span id="L-51"><a href="#L-51"><span class="linenos">51</span></a>            <span class="n">ret</span> <span class="o">+=</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__age</span><span class="p">,)</span>
+</span><span id="L-52"><a href="#L-52"><span class="linenos">52</span></a>        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">__phone</span><span class="p">:</span>
+</span><span id="L-53"><a href="#L-53"><span class="linenos">53</span></a>            <span class="n">ret</span> <span class="o">+=</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__phone</span><span class="p">,)</span>
+</span><span id="L-54"><a href="#L-54"><span class="linenos">54</span></a>        <span class="k">return</span> <span class="n">ret</span>
 </span></pre></div>
 
 
@@ -148,11 +156,11 @@
 </span><span id="Person-11"><a href="#Person-11"><span class="linenos">11</span></a>
 </span><span id="Person-12"><a href="#Person-12"><span class="linenos">12</span></a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">surname</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">age</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">phone</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
 </span><span id="Person-13"><a href="#Person-13"><span class="linenos">13</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="Person-14"><a href="#Person-14"><span class="linenos">14</span></a><span class="sd">        Konstruktor - vrátí instanci třídy Person.</span>
-</span><span id="Person-15"><a href="#Person-15"><span class="linenos">15</span></a><span class="sd">        :param name:</span>
-</span><span id="Person-16"><a href="#Person-16"><span class="linenos">16</span></a><span class="sd">        :param surname:</span>
-</span><span id="Person-17"><a href="#Person-17"><span class="linenos">17</span></a><span class="sd">        :param age:</span>
-</span><span id="Person-18"><a href="#Person-18"><span class="linenos">18</span></a><span class="sd">        :param phone:</span>
+</span><span id="Person-14"><a href="#Person-14"><span class="linenos">14</span></a><span class="sd">        Konstruktor vrátí instanci třídy Person.</span>
+</span><span id="Person-15"><a href="#Person-15"><span class="linenos">15</span></a><span class="sd">        :param name: jméno</span>
+</span><span id="Person-16"><a href="#Person-16"><span class="linenos">16</span></a><span class="sd">        :param surname: příjmení</span>
+</span><span id="Person-17"><a href="#Person-17"><span class="linenos">17</span></a><span class="sd">        :param age: nepovinná proměnná, věk</span>
+</span><span id="Person-18"><a href="#Person-18"><span class="linenos">18</span></a><span class="sd">        :param phone: nepovinná proměnná, telefonní číslo</span>
 </span><span id="Person-19"><a href="#Person-19"><span class="linenos">19</span></a><span class="sd">        &quot;&quot;&quot;</span>
 </span><span id="Person-20"><a href="#Person-20"><span class="linenos">20</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">__name</span> <span class="o">=</span> <span class="n">name</span>
 </span><span id="Person-21"><a href="#Person-21"><span class="linenos">21</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">__surname</span> <span class="o">=</span> <span class="n">surname</span>
@@ -160,28 +168,36 @@
 </span><span id="Person-23"><a href="#Person-23"><span class="linenos">23</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">__phone</span> <span class="o">=</span> <span class="n">phone</span>
 </span><span id="Person-24"><a href="#Person-24"><span class="linenos">24</span></a>
 </span><span id="Person-25"><a href="#Person-25"><span class="linenos">25</span></a>    <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-</span><span id="Person-26"><a href="#Person-26"><span class="linenos">26</span></a>        <span class="k">return</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">get_name</span><span class="p">()</span><span class="si">:</span><span class="s1"> &lt;</span><span class="si">{</span><span class="n">Person</span><span class="o">.</span><span class="n">NAME_MAX_LEN</span><span class="si">}}{</span><span class="bp">self</span><span class="o">.</span><span class="n">get_surname</span><span class="p">()</span><span class="si">:</span><span class="s1"> &lt;</span><span class="si">{</span><span class="n">Person</span><span class="o">.</span><span class="n">NAME_MAX_LEN</span><span class="si">}}</span><span class="s1">&#39;</span> \
-</span><span id="Person-27"><a href="#Person-27"><span class="linenos">27</span></a>               <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">get_age</span><span class="p">()</span><span class="si">:</span><span class="s1"> &lt;</span><span class="si">{</span><span class="n">Person</span><span class="o">.</span><span class="n">NAME_MAX_LEN</span><span class="si">}}{</span><span class="bp">self</span><span class="o">.</span><span class="n">get_phone</span><span class="p">()</span><span class="si">:</span><span class="s1"> &lt;</span><span class="si">{</span><span class="n">Person</span><span class="o">.</span><span class="n">NAME_MAX_LEN</span><span class="si">}}</span><span class="s1">&#39;</span>
-</span><span id="Person-28"><a href="#Person-28"><span class="linenos">28</span></a>
-</span><span id="Person-29"><a href="#Person-29"><span class="linenos">29</span></a>    <span class="k">def</span> <span class="nf">get_name</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-</span><span id="Person-30"><a href="#Person-30"><span class="linenos">30</span></a>        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__name</span>
-</span><span id="Person-31"><a href="#Person-31"><span class="linenos">31</span></a>
-</span><span id="Person-32"><a href="#Person-32"><span class="linenos">32</span></a>    <span class="k">def</span> <span class="nf">get_surname</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-</span><span id="Person-33"><a href="#Person-33"><span class="linenos">33</span></a>        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__surname</span>
-</span><span id="Person-34"><a href="#Person-34"><span class="linenos">34</span></a>
-</span><span id="Person-35"><a href="#Person-35"><span class="linenos">35</span></a>    <span class="k">def</span> <span class="nf">get_age</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-</span><span id="Person-36"><a href="#Person-36"><span class="linenos">36</span></a>        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__age</span>
-</span><span id="Person-37"><a href="#Person-37"><span class="linenos">37</span></a>
-</span><span id="Person-38"><a href="#Person-38"><span class="linenos">38</span></a>    <span class="k">def</span> <span class="nf">get_phone</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-</span><span id="Person-39"><a href="#Person-39"><span class="linenos">39</span></a>        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__phone</span>
-</span><span id="Person-40"><a href="#Person-40"><span class="linenos">40</span></a>
-</span><span id="Person-41"><a href="#Person-41"><span class="linenos">41</span></a>    <span class="k">def</span> <span class="nf">get_as_tuple</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-</span><span id="Person-42"><a href="#Person-42"><span class="linenos">42</span></a>        <span class="n">ret</span> <span class="o">=</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__name</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">__surname</span><span class="p">)</span>
-</span><span id="Person-43"><a href="#Person-43"><span class="linenos">43</span></a>        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">__age</span><span class="p">:</span>
-</span><span id="Person-44"><a href="#Person-44"><span class="linenos">44</span></a>            <span class="n">ret</span> <span class="o">+=</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__age</span><span class="p">,)</span>
-</span><span id="Person-45"><a href="#Person-45"><span class="linenos">45</span></a>        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">__phone</span><span class="p">:</span>
-</span><span id="Person-46"><a href="#Person-46"><span class="linenos">46</span></a>            <span class="n">ret</span> <span class="o">+=</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__phone</span><span class="p">,)</span>
-</span><span id="Person-47"><a href="#Person-47"><span class="linenos">47</span></a>        <span class="k">return</span> <span class="n">ret</span>
+</span><span id="Person-26"><a href="#Person-26"><span class="linenos">26</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="Person-27"><a href="#Person-27"><span class="linenos">27</span></a><span class="sd">        Textová reprezentace objektu. Používá se pro vypisování osob do tabulky.</span>
+</span><span id="Person-28"><a href="#Person-28"><span class="linenos">28</span></a><span class="sd">        :return: f string - jméno, příjmení, věk a telefonní číslo jako sloupce tabulky o šířce NAME_MAX_LEN</span>
+</span><span id="Person-29"><a href="#Person-29"><span class="linenos">29</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="Person-30"><a href="#Person-30"><span class="linenos">30</span></a>        <span class="k">return</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">get_name</span><span class="p">()</span><span class="si">:</span><span class="s1"> &lt;</span><span class="si">{</span><span class="n">Person</span><span class="o">.</span><span class="n">NAME_MAX_LEN</span><span class="si">}}{</span><span class="bp">self</span><span class="o">.</span><span class="n">get_surname</span><span class="p">()</span><span class="si">:</span><span class="s1"> &lt;</span><span class="si">{</span><span class="n">Person</span><span class="o">.</span><span class="n">NAME_MAX_LEN</span><span class="si">}}</span><span class="s1">&#39;</span> \
+</span><span id="Person-31"><a href="#Person-31"><span class="linenos">31</span></a>               <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">get_age</span><span class="p">()</span><span class="si">:</span><span class="s1"> &lt;</span><span class="si">{</span><span class="n">Person</span><span class="o">.</span><span class="n">NAME_MAX_LEN</span><span class="si">}}{</span><span class="bp">self</span><span class="o">.</span><span class="n">get_phone</span><span class="p">()</span><span class="si">:</span><span class="s1"> &lt;</span><span class="si">{</span><span class="n">Person</span><span class="o">.</span><span class="n">NAME_MAX_LEN</span><span class="si">}}</span><span class="s1">&#39;</span>
+</span><span id="Person-32"><a href="#Person-32"><span class="linenos">32</span></a>
+</span><span id="Person-33"><a href="#Person-33"><span class="linenos">33</span></a>    <span class="k">def</span> <span class="nf">get_name</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span><span id="Person-34"><a href="#Person-34"><span class="linenos">34</span></a>        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__name</span>
+</span><span id="Person-35"><a href="#Person-35"><span class="linenos">35</span></a>
+</span><span id="Person-36"><a href="#Person-36"><span class="linenos">36</span></a>    <span class="k">def</span> <span class="nf">get_surname</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span><span id="Person-37"><a href="#Person-37"><span class="linenos">37</span></a>        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__surname</span>
+</span><span id="Person-38"><a href="#Person-38"><span class="linenos">38</span></a>
+</span><span id="Person-39"><a href="#Person-39"><span class="linenos">39</span></a>    <span class="k">def</span> <span class="nf">get_age</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span><span id="Person-40"><a href="#Person-40"><span class="linenos">40</span></a>        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__age</span>
+</span><span id="Person-41"><a href="#Person-41"><span class="linenos">41</span></a>
+</span><span id="Person-42"><a href="#Person-42"><span class="linenos">42</span></a>    <span class="k">def</span> <span class="nf">get_phone</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span><span id="Person-43"><a href="#Person-43"><span class="linenos">43</span></a>        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__phone</span>
+</span><span id="Person-44"><a href="#Person-44"><span class="linenos">44</span></a>
+</span><span id="Person-45"><a href="#Person-45"><span class="linenos">45</span></a>    <span class="k">def</span> <span class="nf">get_as_tuple</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span><span id="Person-46"><a href="#Person-46"><span class="linenos">46</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="Person-47"><a href="#Person-47"><span class="linenos">47</span></a><span class="sd">        Metoda, která navrátí parametry objektu.</span>
+</span><span id="Person-48"><a href="#Person-48"><span class="linenos">48</span></a><span class="sd">        :return: tuple obsahující jméno a příjmení, případně věk, případně telefonní číslo</span>
+</span><span id="Person-49"><a href="#Person-49"><span class="linenos">49</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="Person-50"><a href="#Person-50"><span class="linenos">50</span></a>        <span class="n">ret</span> <span class="o">=</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__name</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">__surname</span><span class="p">)</span>
+</span><span id="Person-51"><a href="#Person-51"><span class="linenos">51</span></a>        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">__age</span><span class="p">:</span>
+</span><span id="Person-52"><a href="#Person-52"><span class="linenos">52</span></a>            <span class="n">ret</span> <span class="o">+=</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__age</span><span class="p">,)</span>
+</span><span id="Person-53"><a href="#Person-53"><span class="linenos">53</span></a>        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">__phone</span><span class="p">:</span>
+</span><span id="Person-54"><a href="#Person-54"><span class="linenos">54</span></a>            <span class="n">ret</span> <span class="o">+=</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__phone</span><span class="p">,)</span>
+</span><span id="Person-55"><a href="#Person-55"><span class="linenos">55</span></a>        <span class="k">return</span> <span class="n">ret</span>
 </span></pre></div>
 
 
@@ -201,11 +217,11 @@
     <a class="headerlink" href="#Person.__init__"></a>
             <div class="pdoc-code codehilite"><pre><span></span><span id="Person.__init__-12"><a href="#Person.__init__-12"><span class="linenos">12</span></a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">surname</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">age</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">phone</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
 </span><span id="Person.__init__-13"><a href="#Person.__init__-13"><span class="linenos">13</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="Person.__init__-14"><a href="#Person.__init__-14"><span class="linenos">14</span></a><span class="sd">        Konstruktor - vrátí instanci třídy Person.</span>
-</span><span id="Person.__init__-15"><a href="#Person.__init__-15"><span class="linenos">15</span></a><span class="sd">        :param name:</span>
-</span><span id="Person.__init__-16"><a href="#Person.__init__-16"><span class="linenos">16</span></a><span class="sd">        :param surname:</span>
-</span><span id="Person.__init__-17"><a href="#Person.__init__-17"><span class="linenos">17</span></a><span class="sd">        :param age:</span>
-</span><span id="Person.__init__-18"><a href="#Person.__init__-18"><span class="linenos">18</span></a><span class="sd">        :param phone:</span>
+</span><span id="Person.__init__-14"><a href="#Person.__init__-14"><span class="linenos">14</span></a><span class="sd">        Konstruktor vrátí instanci třídy Person.</span>
+</span><span id="Person.__init__-15"><a href="#Person.__init__-15"><span class="linenos">15</span></a><span class="sd">        :param name: jméno</span>
+</span><span id="Person.__init__-16"><a href="#Person.__init__-16"><span class="linenos">16</span></a><span class="sd">        :param surname: příjmení</span>
+</span><span id="Person.__init__-17"><a href="#Person.__init__-17"><span class="linenos">17</span></a><span class="sd">        :param age: nepovinná proměnná, věk</span>
+</span><span id="Person.__init__-18"><a href="#Person.__init__-18"><span class="linenos">18</span></a><span class="sd">        :param phone: nepovinná proměnná, telefonní číslo</span>
 </span><span id="Person.__init__-19"><a href="#Person.__init__-19"><span class="linenos">19</span></a><span class="sd">        &quot;&quot;&quot;</span>
 </span><span id="Person.__init__-20"><a href="#Person.__init__-20"><span class="linenos">20</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">__name</span> <span class="o">=</span> <span class="n">name</span>
 </span><span id="Person.__init__-21"><a href="#Person.__init__-21"><span class="linenos">21</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">__surname</span> <span class="o">=</span> <span class="n">surname</span>
@@ -214,15 +230,15 @@
 </span></pre></div>
 
 
-            <div class="docstring"><p>Konstruktor - vrátí instanci třídy Person.</p>
+            <div class="docstring"><p>Konstruktor vrátí instanci třídy Person.</p>
 
 <h6 id="parameters">Parameters</h6>
 
 <ul>
-<li><strong>name</strong>: </li>
-<li><strong>surname</strong>: </li>
-<li><strong>age</strong>: </li>
-<li><strong>phone</strong>: </li>
+<li><strong>name</strong>:  jméno</li>
+<li><strong>surname</strong>:  příjmení</li>
+<li><strong>age</strong>:  nepovinná proměnná, věk</li>
+<li><strong>phone</strong>:  nepovinná proměnná, telefonní číslo</li>
 </ul>
 </div>
 
@@ -251,8 +267,8 @@
 
     </div>
     <a class="headerlink" href="#Person.get_name"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="Person.get_name-29"><a href="#Person.get_name-29"><span class="linenos">29</span></a>    <span class="k">def</span> <span class="nf">get_name</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-</span><span id="Person.get_name-30"><a href="#Person.get_name-30"><span class="linenos">30</span></a>        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__name</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="Person.get_name-33"><a href="#Person.get_name-33"><span class="linenos">33</span></a>    <span class="k">def</span> <span class="nf">get_name</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span><span id="Person.get_name-34"><a href="#Person.get_name-34"><span class="linenos">34</span></a>        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__name</span>
 </span></pre></div>
 
 
@@ -270,8 +286,8 @@
 
     </div>
     <a class="headerlink" href="#Person.get_surname"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="Person.get_surname-32"><a href="#Person.get_surname-32"><span class="linenos">32</span></a>    <span class="k">def</span> <span class="nf">get_surname</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-</span><span id="Person.get_surname-33"><a href="#Person.get_surname-33"><span class="linenos">33</span></a>        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__surname</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="Person.get_surname-36"><a href="#Person.get_surname-36"><span class="linenos">36</span></a>    <span class="k">def</span> <span class="nf">get_surname</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span><span id="Person.get_surname-37"><a href="#Person.get_surname-37"><span class="linenos">37</span></a>        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__surname</span>
 </span></pre></div>
 
 
@@ -289,8 +305,8 @@
 
     </div>
     <a class="headerlink" href="#Person.get_age"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="Person.get_age-35"><a href="#Person.get_age-35"><span class="linenos">35</span></a>    <span class="k">def</span> <span class="nf">get_age</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-</span><span id="Person.get_age-36"><a href="#Person.get_age-36"><span class="linenos">36</span></a>        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__age</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="Person.get_age-39"><a href="#Person.get_age-39"><span class="linenos">39</span></a>    <span class="k">def</span> <span class="nf">get_age</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span><span id="Person.get_age-40"><a href="#Person.get_age-40"><span class="linenos">40</span></a>        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__age</span>
 </span></pre></div>
 
 
@@ -308,8 +324,8 @@
 
     </div>
     <a class="headerlink" href="#Person.get_phone"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="Person.get_phone-38"><a href="#Person.get_phone-38"><span class="linenos">38</span></a>    <span class="k">def</span> <span class="nf">get_phone</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-</span><span id="Person.get_phone-39"><a href="#Person.get_phone-39"><span class="linenos">39</span></a>        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__phone</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="Person.get_phone-42"><a href="#Person.get_phone-42"><span class="linenos">42</span></a>    <span class="k">def</span> <span class="nf">get_phone</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span><span id="Person.get_phone-43"><a href="#Person.get_phone-43"><span class="linenos">43</span></a>        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__phone</span>
 </span></pre></div>
 
 
@@ -327,17 +343,29 @@
 
     </div>
     <a class="headerlink" href="#Person.get_as_tuple"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="Person.get_as_tuple-41"><a href="#Person.get_as_tuple-41"><span class="linenos">41</span></a>    <span class="k">def</span> <span class="nf">get_as_tuple</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-</span><span id="Person.get_as_tuple-42"><a href="#Person.get_as_tuple-42"><span class="linenos">42</span></a>        <span class="n">ret</span> <span class="o">=</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__name</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">__surname</span><span class="p">)</span>
-</span><span id="Person.get_as_tuple-43"><a href="#Person.get_as_tuple-43"><span class="linenos">43</span></a>        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">__age</span><span class="p">:</span>
-</span><span id="Person.get_as_tuple-44"><a href="#Person.get_as_tuple-44"><span class="linenos">44</span></a>            <span class="n">ret</span> <span class="o">+=</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__age</span><span class="p">,)</span>
-</span><span id="Person.get_as_tuple-45"><a href="#Person.get_as_tuple-45"><span class="linenos">45</span></a>        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">__phone</span><span class="p">:</span>
-</span><span id="Person.get_as_tuple-46"><a href="#Person.get_as_tuple-46"><span class="linenos">46</span></a>            <span class="n">ret</span> <span class="o">+=</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__phone</span><span class="p">,)</span>
-</span><span id="Person.get_as_tuple-47"><a href="#Person.get_as_tuple-47"><span class="linenos">47</span></a>        <span class="k">return</span> <span class="n">ret</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="Person.get_as_tuple-45"><a href="#Person.get_as_tuple-45"><span class="linenos">45</span></a>    <span class="k">def</span> <span class="nf">get_as_tuple</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span><span id="Person.get_as_tuple-46"><a href="#Person.get_as_tuple-46"><span class="linenos">46</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="Person.get_as_tuple-47"><a href="#Person.get_as_tuple-47"><span class="linenos">47</span></a><span class="sd">        Metoda, která navrátí parametry objektu.</span>
+</span><span id="Person.get_as_tuple-48"><a href="#Person.get_as_tuple-48"><span class="linenos">48</span></a><span class="sd">        :return: tuple obsahující jméno a příjmení, případně věk, případně telefonní číslo</span>
+</span><span id="Person.get_as_tuple-49"><a href="#Person.get_as_tuple-49"><span class="linenos">49</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="Person.get_as_tuple-50"><a href="#Person.get_as_tuple-50"><span class="linenos">50</span></a>        <span class="n">ret</span> <span class="o">=</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__name</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">__surname</span><span class="p">)</span>
+</span><span id="Person.get_as_tuple-51"><a href="#Person.get_as_tuple-51"><span class="linenos">51</span></a>        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">__age</span><span class="p">:</span>
+</span><span id="Person.get_as_tuple-52"><a href="#Person.get_as_tuple-52"><span class="linenos">52</span></a>            <span class="n">ret</span> <span class="o">+=</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__age</span><span class="p">,)</span>
+</span><span id="Person.get_as_tuple-53"><a href="#Person.get_as_tuple-53"><span class="linenos">53</span></a>        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">__phone</span><span class="p">:</span>
+</span><span id="Person.get_as_tuple-54"><a href="#Person.get_as_tuple-54"><span class="linenos">54</span></a>            <span class="n">ret</span> <span class="o">+=</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__phone</span><span class="p">,)</span>
+</span><span id="Person.get_as_tuple-55"><a href="#Person.get_as_tuple-55"><span class="linenos">55</span></a>        <span class="k">return</span> <span class="n">ret</span>
 </span></pre></div>
 
 
-    
+            <div class="docstring"><p>Metoda, která navrátí parametry objektu.</p>
+
+<h6 id="returns">Returns</h6>
+
+<blockquote>
+  <p>tuple obsahující jméno a příjmení, případně věk, případně telefonní číslo</p>
+</blockquote>
+</div>
+
 
                             </div>
                 </section>

@@ -129,9 +129,9 @@ def load_phone():
 def load_person_data(use_age: Optional[bool] = False, use_phone: Optional[bool] = False):
     """
     Funkce, která načte jméno, příjmení, případně věk, případně telefonního číslo ze vstupu z klávesnice.
-    :param use_age:
-    :param use_phone:
-    :return:
+    :param use_age: proměnná označuje, zda chceme načítat i věk
+    :param use_phone: proměnná označuje, zda chceme načítat i telefonní číslo
+    :return: seznam obsahující jméno, příjmení, případně věk a telefonní číslo
     """
     data = [load_name(), load_name(use_surname=True)]
     if use_age:
@@ -146,7 +146,6 @@ def print_persons_table(persons_list: List[Person]):
     Funkce vytiskne seznam údajů zadaných osob do přehledné tabulky s hlavičkou.
     Tabulka obsahuje 4 sloupce: Jméno, Příjmení, Věk a Telefonní číslo.
     :param persons_list: seznam osob, jejichž údaje mají být vypsány do tabulky
-    :return:
     """
     print("".join(column.ljust(Person.NAME_MAX_LEN) for column in ['Jméno', 'Příjmení', 'Věk', 'Telefonní číslo']))
     for person in persons_list:

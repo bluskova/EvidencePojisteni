@@ -21,7 +21,6 @@ class StorageInterface:
         """
         Metoda přidá osobu do evidence.
         :param person:
-        :return:
         """
         pass
 
@@ -32,28 +31,27 @@ class StorageInterface:
         :param name: jméno osoby, kterou chceme odstranit
         :param surname: příjmení osoby, kterou chceme odstranit
         :param age: věk osoby, kterou chceme odstranit
-        :return:
         """
         pass
 
     @abstractmethod
-    def count_person_registered(self, name: str, surname: str, age: Optional[int]) -> bool:
+    def count_person_registered(self, name: str, surname: str, age: Optional[int]) -> int:
         """
         Medota vrátí počet osob v evidenci s vybraným jménem a příjmením, případně daného věku.
-        :param name:
-        :param surname:
-        :param age:
-        :return:
+        :param name: jméno hledané osoby
+        :param surname: příjmení hledané osoby
+        :param age: nepovinný parametr, věk hledané osoby
+        :return: počet osob v evidence se zadaným jménem a příjmením, případně věkem
         """
         pass
 
     def is_person_registered(self, name: str, surname: str, age: Optional[int] = None) -> bool:
         """
         Medota zjistí, zda je vybraná osoba zaevidovaná.
-        :param name:
-        :param surname:
-        :param age:
-        :return:
+        :param name: jméno hledané osoby
+        :param surname: příjmení hledané osoby
+        :param age: nepovinný parametr, věk hledané osoby
+        :return: bool - zda je hledaná osoba v evidenci
         """
         return bool(self.count_person_registered(name, surname, age))
 
@@ -61,9 +59,9 @@ class StorageInterface:
     def get_persons(self, name: str, surname: str) -> List[Person]:
         """
         Metoda vyhledá v evidenci osoby podle zadaného jména a příjmení, vrátí všechny jejich údaje.
-        :param name:
-        :param surname:
-        :return:
+        :param name: jméno hledané osoby
+        :param surname: příjmení hledané osoby
+        :return: seznam všech osob z evidence, které mají dané jméno a příjmení
         """
         pass
 
@@ -71,6 +69,6 @@ class StorageInterface:
     def get_all_persons(self) -> List[Person]:
         """
         Metoda vrátí všechny osoby, které jsou uloženy v evidenci.
-        :return:
+        :return: seznam všech osob v evidenci
         """
         pass
