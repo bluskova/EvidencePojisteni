@@ -1,9 +1,9 @@
-from abc import abstractmethod
+from abc import abstractmethod, ABC
 from typing import Optional, List
 from src.person import Person
 
 
-class StorageInterface:
+class StorageInterface(ABC):
     """
     Rozhradní pro práci s databází.
     """
